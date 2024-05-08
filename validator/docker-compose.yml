@@ -1,0 +1,17 @@
+services:
+  validator:
+    image: 0g-chain:${TAG}
+    build:
+      context: .
+      args:
+        TAG: ${TAG}
+    container_name: 0g-chain-validator
+    env_file:
+      - .env
+    volumes:
+      - ./0gchain:/root/.0gchain
+    ports:
+      - "26656-26657:26656-26657"
+    restart: unless-stopped
+    command:
+      - start
