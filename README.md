@@ -22,6 +22,8 @@ docker-compose.yml for 0G nodes
     ```
     cat << EOF > .env
     TAG=v0.1.0
+    PROMETHEUS_PORT=9090
+    GRAFANA_PORT=3000
     VALIDATOR_NAME=<your_validator_name>
     SEEDS=<comma_separated_peers>
     EOF
