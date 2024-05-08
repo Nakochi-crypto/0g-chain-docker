@@ -19,4 +19,8 @@ echo "Add Seed Nodes"
 sed -i -e "/^seeds =/c seeds = \"$SEEDS\"" ~/.0gchain/config/config.toml
 sed -n -e "/^seeds =/p" ~/.0gchain/config/config.toml
 
-exec 0gchaind "$@"
+echo "Enable Prometheus"
+sed -i -e "/^prometheus =/c prometheus = true" ~/.0gchain/config/config.toml
+sed -n -e "/^prometheus =/p" ~/.0gchain/config/config.toml
+
+exec "$@"
