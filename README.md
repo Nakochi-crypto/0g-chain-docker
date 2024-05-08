@@ -46,3 +46,7 @@ docker compose logs -f
 ```
 docker compose down
 ```
+
+## Known Issues
+
+- The config and data stored on the host are generated with root ownership.
