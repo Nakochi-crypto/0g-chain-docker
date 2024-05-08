@@ -33,6 +33,14 @@ docker-compose.yml for 0G nodes
     docker compose up -d
     ```
 
+4. Create Validator
+
+    Prepend `docker compose exec validator` to each command on the official document like:
+
+    ```
+    docker compose exec validarot 0gchaind keys add <key_name> --eth
+    ```
+
 ## Commands
 
 ### View logs
