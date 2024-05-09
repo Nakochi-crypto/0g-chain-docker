@@ -1,17 +1,19 @@
 services:
   validator:
-    image: 0g-chain:${TAG}
+    image: "0g-chain:${TAG}"
     build:
       context: .
       args:
-        TAG: ${TAG}
+        TAG: "${TAG}"
     container_name: 0g-chain-validator
     env_file:
       - .env
     volumes:
-      - ./0gchain:/root/.0gchain
+      - "${CONFIG_DIR}:/root/.0gchain/config"
+      - 0g_validator_data:/root/.0gchain/data
     ports:
-      - "26656-26657:26656-26657"
+      - "${RPC_PORT}:26656"
+      - "${WS_PORT}:26657"
     restart: unless-stopped
     command:
       - 0gchaind
@@ -33,7 +35,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./prometheus:/etc/prometheus
-      - prometheus_data:/prometheus
+      - 0g_validator_prometheus_data:/prometheus
     ports:
       - "${PROMETHEUS_PORT}:9090"
 
@@ -44,10 +46,12 @@ services:
     volumes:
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/provisioning:/etc/grafana/provisioning
-      - grafana_data:/var/lib/grafana
+      - 0g_validator_grafana_data:/var/lib/grafana
     ports:
       - "${GRAFANA_PORT}:3000"
 
 volumes:
-  prometheus_data:
-  grafana_data:
+  0g_validator_config:
+  0g_validator_data:
+  0g_validator_prometheus_data:
+  0g_validator_grafana_data:
