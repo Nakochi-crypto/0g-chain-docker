@@ -9,8 +9,7 @@ services:
     env_file:
       - .env
     volumes:
-      - "${CONFIG_DIR}:/root/.0gchain/config"
-      - 0g_validator_data:/root/.0gchain/data
+      - "${VALIDATOR_DIR}:/root/.0gchain"
     ports:
       - "${RPC_PORT}:26656"
       - "${WS_PORT}:26657"
@@ -51,7 +50,6 @@ services:
       - "${GRAFANA_PORT}:3000"
 
 volumes:
-  0g_validator_config:
   0g_validator_data:
   0g_validator_prometheus_data:
   0g_validator_grafana_data:
