@@ -14,9 +14,6 @@ services:
       - "${RPC_PORT}:26656"
       - "${WS_PORT}:26657"
     restart: unless-stopped
-    command:
-      - 0gchaind
-      - start
 
   node_exporter:
     image: prom/node-exporter:latest
@@ -53,3 +50,7 @@ volumes:
   0g_validator_data:
   0g_validator_prometheus_data:
   0g_validator_grafana_data:
+
+networks:
+  default:
+    name: 0g-chain-network

@@ -14,3 +14,4 @@ COPY --from=builder /go/bin/0gchaind /usr/local/bin/
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["0gchaind", "start"]
