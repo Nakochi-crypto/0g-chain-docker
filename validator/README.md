@@ -1,4 +1,4 @@
-## Validator Node
+# Validator Node
 
 [See also the official document](https://docs.0g.ai/0g-doc/run-a-node/validator-node)
 
